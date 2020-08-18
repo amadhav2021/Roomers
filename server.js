@@ -18,7 +18,7 @@ io.on('connection', socket => {
 
 // Endpoints
 app.get('/', (req, res) => {
-    res.send('hello')
+    res.render('index')
 })
 
 // Set server to listen to port
