@@ -8,6 +8,8 @@ const path = require('path')
 
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')))
+// Set view engine
+app.set('view engine', 'hbs')
 
 // Run when new connection occurs
 io.on('connection', socket => {
