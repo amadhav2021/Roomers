@@ -1,19 +1,13 @@
-#!/usr/bin/nodejs
+const express = require('express')
+const app = express()
+const PORT = process.env.PORT || 3000
+const server = require('http').createServer(app)
+const io = require('socket.io').listen(server)
 
-// -------------- load packages -------------- //
-var express = require('express');
-var app = express();
-var path = require('path');
+app.get('/', (req, res) => {
+    res.send('hello')
+})
 
-// -------------- express initialization -------------- //
-app.set('port', process.env.PORT || 3000);
-
-// -------------- express endpoints -------------- //
-app.get('/', function(req, res){
-    res.send('peep');
-});
-
-// -------------- listener -------------- //
-var listener = app.listen(app.get('port'), function(){
-    console.log('Express server started on port: ' + listener.address().port);
-});
+server.listen(PORT, () => {
+    console.log('Server running on port ', PORT)
+})
