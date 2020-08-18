@@ -3,3 +3,7 @@ document.querySelector('h1').addEventListener('click', () => {
 })
 
 const socket = io()
+
+socket.on('welcome', data => {
+    document.querySelector('#message').innerHTML = data
+})
