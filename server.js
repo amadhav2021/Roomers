@@ -14,6 +14,7 @@ app.set('view engine', 'hbs')
 // Run when new connection occurs
 io.on('connection', socket => {
     console.log('New socket connection...')
+    console.log('id: ', socket.id)
 })
 
 // Endpoints
