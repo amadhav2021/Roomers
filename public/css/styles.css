@@ -1,8 +1,40 @@
 h1 {
     color: orange;
-    align-content: center;
+    text-align: center;
 }
 
 h1:hover {
     cursor: pointer;
+}
+
+#server_msg {
+    text-align: center;
+}
+
+#msg {
+    width: 750px;
+
+}
+
+.controls {
+    width: 800px;
+    margin: auto;
+}
+
+#msg {
+    float: left;
+    width: 700px;
+    height: 50px;
+}
+
+#send {
+    float: right;
+    width: 50px;
+}
+
+.msgWrapper {
+    border: 1px solid gray;
+    width: 800px;
+    height: 300px;
+    margin: auto;
 }
