@@ -14,6 +14,10 @@ app.set('view engine', 'hbs')
 // Run when new connection occurs
 io.on('connection', socket => {
     socket.emit('welcome', `Welcome to Roomers. Your id is ${socket.id}`)
+
+    socket.on('client_message', data => {
+        io.emit('new_message', data)
+    })
 })
 
 // Endpoints
