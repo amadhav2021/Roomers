@@ -10,6 +10,12 @@ document.querySelector('#msg').onkeydown = (e) => {
     }
 }
 
+document.querySelector('#send').addEventListener('click', () => {
+    val = document.querySelector('#msg').value
+    document.querySelector('#msg').value = ''
+    socket.emit('client_message', val) 
+})
+
 const socket = io()
 
 socket.on('welcome', data => {
