@@ -4,16 +4,20 @@ document.querySelector('h1').addEventListener('click', () => {
 
 document.querySelector('#msg').onkeydown = (e) => {
     if(e.keyCode == 13){
-        val = document.querySelector('#msg').value
+        val = document.querySelector('#msg').value.trim()
         document.querySelector('#msg').value = ''
-        socket.emit('client_message', val)
+        if(val !== ''){
+            socket.emit('client_message', val)
+        }
     }
 }
 
 document.querySelector('#send').addEventListener('click', () => {
-    val = document.querySelector('#msg').value
+    val = document.querySelector('#msg').value.trim()
     document.querySelector('#msg').value = ''
-    socket.emit('client_message', val) 
+    if(val !== ''){
+        socket.emit('client_message', val)
+    }
 })
 
 const socket = io()
