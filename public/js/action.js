@@ -21,6 +21,8 @@ document.querySelector('#send').addEventListener('click', () => {
     if(val !== ''){
         socket.emit('client_message', val)
     }
+    // Focus back on to the text field since user has clicked off of it
+    document.querySelector('#msg').focus()
 })
 
 // Initialize a socket at the root namespace
