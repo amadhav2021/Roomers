@@ -13,11 +13,20 @@ app.set('view engine', 'hbs')
 
 // Run when new connection occurs
 io.on('connection', socket => {
+    // Welcome the client by sending their id
     socket.emit('welcome', `Welcome to Roomers. Your id is ${socket.id}`)
+
+    // Tell all other clients that a new socket has joined
+    socket.broadcast.emit('new_message', 'A new user has joined')
 
     // When client sends a message
     socket.on('client_message', data => {
         io.emit('new_message', data)
+    })
+
+    // When a client leaves, notify all other clients
+    socket.on('disconnect', () => {
+        io.emit('new_message', 'A user has left the chat')
     })
 })
 
