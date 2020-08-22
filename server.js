@@ -15,6 +15,7 @@ app.set('view engine', 'hbs')
 io.on('connection', socket => {
     socket.emit('welcome', `Welcome to Roomers. Your id is ${socket.id}`)
 
+    // When client sends a message
     socket.on('client_message', data => {
         io.emit('new_message', data)
     })
@@ -22,7 +23,7 @@ io.on('connection', socket => {
 
 // Endpoints
 app.get('/', (req, res) => {
-    res.render('index')
+    res.render('chat')
 })
 
 // Set server to listen to port
