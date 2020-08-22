@@ -5,6 +5,8 @@ const PORT = process.env.PORT || 3000
 const server = require('http').createServer(app)
 const io = require('socket.io').listen(server)
 const path = require('path')
+const format = require('./utils/message')
+const formatMessage = require('./utils/message')
 
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')))
@@ -17,16 +19,16 @@ io.on('connection', socket => {
     socket.emit('welcome', `Welcome to Roomers. Your id is ${socket.id}`)
 
     // Tell all other clients that a new socket has joined
-    socket.broadcast.emit('new_message', 'A new user has joined')
+    socket.broadcast.emit('new_message', format('Roomers Bot', 'A new user has joined'))
 
     // When client sends a message
     socket.on('client_message', data => {
-        io.emit('new_message', data)
+        io.emit('new_message', format('', data))
     })
 
     // When a client leaves, notify all other clients
     socket.on('disconnect', () => {
-        io.emit('new_message', 'A user has left the chat')
+        io.emit('new_message', format('Roomers Bot', 'A user has left the chat'))
     })
 })
 
