@@ -38,10 +38,10 @@ socket.on('new_message', data => {
     displayMessage(data)
 })
 
-// Given text, display the text in the chat
+// Given a message object, display the text in the chat
 function displayMessage(message){
     ul = document.querySelector('.messages')
     latest = document.createElement('li')
-    latest.innerHTML = message
+    latest.innerHTML = `Sent at ${message.time} by ${message.name}: ${message.text}`
     ul.appendChild(latest)
 }
