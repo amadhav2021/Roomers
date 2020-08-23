@@ -34,7 +34,11 @@ io.on('connection', socket => {
 
 // Endpoints
 app.get('/', (req, res) => {
-    res.render('chat')
+    res.render('index')
+})
+
+app.get('/chat', (req, res) => {
+    res.render('chat', {room: req.query.room})
 })
 
 // Set server to listen to port
