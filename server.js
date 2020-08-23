@@ -23,7 +23,7 @@ io.on('connection', socket => {
 
     // When client sends a message
     socket.on('client_message', data => {
-        io.emit('new_message', format('', data))
+        io.emit('new_message', format('USER', data))
     })
 
     // When a client leaves, notify all other clients
