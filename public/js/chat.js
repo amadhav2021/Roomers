@@ -1,3 +1,11 @@
+// Initialize a socket at the root namespace
+const socket = io()
+
+// Grab the room name parameter from the query and send to server
+const params = new URLSearchParams(window.location.search)
+const ROOM = params.get('room')
+socket.emit('join-room', {room: ROOM})
+
 // [TEMPORARY] Test click on title
 document.querySelector('h1').addEventListener('click', () => {
     alert('Thanks for clicking!')
@@ -23,14 +31,6 @@ document.querySelector('#send').addEventListener('click', () => {
     }
     // Focus back on to the text field since user has clicked off of it
     document.querySelector('#msg').focus()
-})
-
-// Initialize a socket at the root namespace
-const socket = io()
-
-// [TEMPORARY] Welcome message from server with socket id
-socket.on('welcome', data => {
-    document.querySelector('#server_msg').innerHTML = data
 })
 
 // New message received event. Add it to the chat
