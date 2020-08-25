@@ -4,7 +4,7 @@ function formatMessage(name, text){
     return {
         name,
         text,
-        time: moment().tz('America/New_York').format('h:mm a')
+        time: moment().format('h:mm a')
     }
 }
 
