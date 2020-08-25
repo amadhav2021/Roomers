@@ -12,11 +12,6 @@ const params = new URLSearchParams(window.location.search)
 const ROOM = params.get('room')
 socket.emit('join_room', {room: ROOM, name: username})
 
-// [TEMPORARY] Test click on title
-document.querySelector('h1').addEventListener('click', () => {
-    alert('Thanks for clicking!')
-})
-
 // When enter key is pressed, get message from text field and send it to server
 document.querySelector('#msg').onkeydown = (e) => {
     if(e.keyCode == 13){
