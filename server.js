@@ -54,9 +54,11 @@ io.on('connection', socket => {
         io.sockets.in(USER_TO_ROOM[socket.id]).emit('new_message', format('Roomers Bot', `${USER_TO_NAME[socket.id]} has left the chat`))
         // Remove that socket from the room
         socket.leave(USER_TO_ROOM[socket.id])
-        // Update the user list for remaining room members
-        name_list = Object.keys(io.nsps['/'].adapter.rooms[USER_TO_ROOM[socket.id]].sockets).map(id => USER_TO_NAME[id])
-        io.sockets.in(USER_TO_ROOM[socket.id]).emit('user_list', name_list)
+        // Update the user list for remaining room members if there are any
+        if(io.nsps['/'].adapter.rooms[USER_TO_ROOM[socket.id]]){
+            name_list = Object.keys(io.nsps['/'].adapter.rooms[USER_TO_ROOM[socket.id]].sockets).map(id => USER_TO_NAME[id])
+            io.sockets.in(USER_TO_ROOM[socket.id]).emit('user_list', name_list)
+        }
         // Remove socket.id info from tracker objects
         delete USER_TO_NAME[socket.id]
         delete USER_TO_ROOM[socket.id]
