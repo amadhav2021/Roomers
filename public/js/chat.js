@@ -10,7 +10,7 @@ while(username === null){
 // Grab the room name parameter from the query and send to server
 const params = new URLSearchParams(window.location.search)
 const ROOM = params.get('room')
-socket.emit('join-room', {room: ROOM, name: username})
+socket.emit('join_room', {room: ROOM, name: username})
 
 // [TEMPORARY] Test click on title
 document.querySelector('h1').addEventListener('click', () => {
@@ -42,6 +42,11 @@ document.querySelector('#send').addEventListener('click', () => {
 // New message received event. Add it to the chat
 socket.on('new_message', data => {
     displayMessage(data)
+})
+
+// When user list is received, update the display
+socket.on('user_list', list => {
+    document.querySelector('#server_msg').innerHTML = `Here are the current users: ${list}`
 })
 
 // Given a message object, display the text in the chat

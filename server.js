@@ -29,7 +29,7 @@ app.get('/chat', (req, res) => {
 io.on('connection', socket => {
 
     // Add to client to room
-    socket.on('join-room', data => {
+    socket.on('join_room', data => {
         // Welcome the client
         socket.emit('new_message', format('Roomers Bot', `Welcome to room ${data.room}, ${data.name}!`))
         socket.join(data.room)
@@ -39,6 +39,9 @@ io.on('connection', socket => {
         USER_TO_ROOM[socket.id] = data.room
         // Associate user with name
         USER_TO_NAME[socket.id] = data.name
+        // Tell everyone in the room who the active members are
+        name_list = Object.keys(io.nsps['/'].adapter.rooms[data.room].sockets).map(id => USER_TO_NAME[id])
+        io.sockets.in(data.room).emit('user_list', name_list)
     })
 
     // When client sends a message
@@ -48,11 +51,15 @@ io.on('connection', socket => {
 
     // When a client leaves, notify all other clients
     socket.on('disconnect', () => {
-        io.sockets.in(USER_TO_ROOM[socket.id]).emit('new_message', format('Roomers Bot', 'A user has left the chat'))
+        io.sockets.in(USER_TO_ROOM[socket.id]).emit('new_message', format('Roomers Bot', `${USER_TO_NAME[socket.id]} has left the chat`))
         // Remove that socket from the room
-        delete USER_TO_ROOM[socket.id]
-        // Delete the id, name pair for that socket
+        socket.leave(USER_TO_ROOM[socket.id])
+        // Update the user list for remaining room members
+        name_list = Object.keys(io.nsps['/'].adapter.rooms[USER_TO_ROOM[socket.id]].sockets).map(id => USER_TO_NAME[id])
+        io.sockets.in(USER_TO_ROOM[socket.id]).emit('user_list', name_list)
+        // Remove socket.id info from tracker objects
         delete USER_TO_NAME[socket.id]
+        delete USER_TO_ROOM[socket.id]
     })
 })
 
