@@ -1,10 +1,16 @@
 // Initialize a socket at the root namespace
 const socket = io()
 
+// Prompt for a name [CHANGE TO MODAL DISPLAY LATER]
+var username = prompt('Give us a name so others know who you are!')
+while(username === null){
+    username = prompt('Give us a name so others know who you are!')
+}
+
 // Grab the room name parameter from the query and send to server
 const params = new URLSearchParams(window.location.search)
 const ROOM = params.get('room')
-socket.emit('join-room', {room: ROOM})
+socket.emit('join-room', {room: ROOM, name: username})
 
 // [TEMPORARY] Test click on title
 document.querySelector('h1').addEventListener('click', () => {
