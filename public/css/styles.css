@@ -1,41 +1,45 @@
-h1 {
-    color: orange;
-    text-align: center;
+body {
+    background-color: rgb(49, 218, 147);
 }
 
-h1:hover {
-    cursor: pointer;
-}
-
-#server_msg {
-    text-align: center;
-}
-
-#msg {
-    width: 750px;
-
-}
-
-.controls {
-    width: 800px;
+.container {
+    width: 70%;
+    height: 400px;
     margin: auto;
-}
-
-#msg {
-    float: left;
-    width: 700px;
-    height: 50px;
-}
-
-#send {
-    float: right;
-    width: 50px;
+    margin-top: 25px;
+    background-color: #fff;
 }
 
 .msgWrapper {
-    border: 1px solid gray;
-    width: 800px;
-    height: 300px;
-    margin: auto;
+    border-color: gray;
+    border-style: solid;
+    border-width: 1px 0 1px 1px;
+    width: 75%;
+    height: 200px;
+    float: right;
     overflow: auto;
+}
+
+.controls {
+    width: 75%;
+    height: 30px;
+    float: right;
+}
+
+#msg {
+    width: 88.7%;
+    height: 100%;
+    vertical-align: middle;
+    float: left;
+}
+
+#send {
+    width: 10%;
+    height: 120%;
+    vertical-align: middle;
+    float: right;
+}
+
+.center {
+    text-align: center;
 }

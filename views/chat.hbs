@@ -9,17 +9,18 @@
     <script src="js/chat.js" defer></script>
 </head>
 <body>
-    <h1>Welcome to Roomers! You are in the {{room}} room</h1>
-    <p id="server_msg"></p>
+    <div class="container">
+        <h1 class="center">Welcome to Roomers! You are in the {{room}} room</h1>
+        <p id="server_msg" class="center"></p>
 
-    <div class="msgWrapper">
-        <ul class="messages"></ul>
-    </div>
+        <div class="msgWrapper">
+            <ul class="messages"></ul>
+        </div>
 
-    <div class="controls">
-        <label for="msg"></label><br>
-        <input type="text" id="msg" name="msg" placeholder="Enter message..."><br>
-        <button id="send">Send</button>
+        <div class="controls">
+            <button id="send">Send</button>
+            <input type="text" id="msg" name="msg" placeholder="Enter message..." required><br>
+        </div>
     </div>
 </body>
 </html>
