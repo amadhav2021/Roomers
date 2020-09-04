@@ -10,18 +10,31 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="center">Welcome to Roomers! You are in room {{room}}</h1>
-        <p id="server_msg" class="center"></p>
-
-        <div class="msgWrapper">
-            <ul class="messages"></ul>
+        <div class="l-panel">
+            <p id="userListHeader" class="center">
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimage.flaticon.com%2Ficons%2Fpng%2F512%2F33%2F33308.png&f=1&nofb=1" alt="" width="24px" height="24px">
+                Users
+            </p>
+            <div class="userListWrapper">
+                <ul id="userList"></ul>
+            </div>
+            <form action="/">
+                <input type="submit" id="exit" value="Leave Room">
+            </form>
         </div>
+        <div class="r-panel">
+            <p id="roomName" class="center">Welcome to Roomers! You are in room {{room}}</p>
 
-        <div class="controls">
-            <button id="send">
-                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn0.iconfinder.com%2Fdata%2Ficons%2Fflat-round-arrow-arrow-head%2F512%2FGreen_Arrow_Top-512.png&f=1&nofb=1" alt="" width="28" height="28">
-            </button>
-            <input type="text" id="msg" name="msg" placeholder="Enter message..." required><br>
+            <div class="msgWrapper">
+                <ul class="messages"></ul>
+            </div>
+
+            <div class="controls">
+                <button id="send">
+                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn0.iconfinder.com%2Fdata%2Ficons%2Fflat-round-arrow-arrow-head%2F512%2FGreen_Arrow_Top-512.png&f=1&nofb=1" alt="" width="28" height="28">
+                </button>
+                <input type="text" id="msg" name="msg" placeholder="Enter message..."><br>
+            </div>
         </div>
     </div>
 </body>
