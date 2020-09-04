@@ -2,10 +2,11 @@
 const socket = io()
 
 // Prompt for a name [CHANGE TO MODAL DISPLAY LATER]
-var username = prompt('Give us a name so others know who you are!')
-while(username === null){
-    username = prompt('Give us a name so others know who you are!')
-}
+var username = 'Paul'
+// var username = prompt('Give us a name so others know who you are!')
+// while(username === null){
+//     username = prompt('Give us a name so others know who you are!')
+// }
 
 // Grab the room name parameter from the query and send to server
 const params = new URLSearchParams(window.location.search)
@@ -41,7 +42,14 @@ socket.on('new_message', data => {
 
 // When user list is received, update the display
 socket.on('user_list', list => {
-    document.querySelector('#server_msg').innerHTML = `Here are the current users: ${list}`
+    ul = document.querySelector('#userList')
+    ul.innerHTML = ''
+    list.forEach((user) => {
+        ul = document.querySelector('#userList')
+        li = document.createElement('li')
+        li.innerHTML = user
+        ul.appendChild(li)
+    })
 })
 
 // Given a message object, display the text in the chat
