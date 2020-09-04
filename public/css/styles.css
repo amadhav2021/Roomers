@@ -17,15 +17,15 @@ body {
     border-color: gray;
     border-style: solid;
     border-width: 1px 0 1px 1px;
-    width: 75%;
-    height: 200px;
+    width: 80%;
+    height: 250px;
     float: right;
     overflow: auto;
 }
 
 .controls {
-    width: 75%;
-    height: 30px;
+    width: 80.2%;
+    height: 35px;
     float: right;
 }
 
@@ -38,9 +38,9 @@ body {
 }
 
 #send {
-    background-color: #3be495;
+    background-color: #8ee9be;
     width: 7.5%;
-    height: 120%;
+    height: 119.5%;
     vertical-align: middle;
     float: right;
     border-width: 0.5px;
