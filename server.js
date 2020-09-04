@@ -22,7 +22,12 @@ app.get('/', (req, res) => {
 })
 
 app.get('/chat', (req, res) => {
-    res.render('chat', {room: req.query.room})
+    if(req.query.room){
+        res.render('chat', {room: req.query.room})    
+    }
+    else{
+        res.redirect('/')
+    }
 })
 
 // Run when new connection occurs
