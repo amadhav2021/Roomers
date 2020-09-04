@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap');
+
 body {
-    background-color: rgb(49, 218, 147);
+    background-color: rgb(223, 102, 102);
+    font-family: 'Noto Sans JP', sans-serif;
 }
 
 .container {
@@ -27,17 +30,26 @@ body {
 }
 
 #msg {
-    width: 88.7%;
+    width: 91.2%;
     height: 100%;
     vertical-align: middle;
     float: left;
+    font-family: 'Noto Sans JP', sans-serif;
 }
 
 #send {
-    width: 10%;
+    background-color: #3be495;
+    width: 7.5%;
     height: 120%;
     vertical-align: middle;
     float: right;
+    border-width: 0.5px;
+    transition: background-color 0.5s ease-out;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+#send:hover {
+    background-color: #1ca872;
 }
 
 .center {
