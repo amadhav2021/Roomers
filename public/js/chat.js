@@ -2,11 +2,11 @@
 const socket = io()
 
 // Prompt for a name [CHANGE TO MODAL DISPLAY LATER]
-var username = 'Paul'
-// var username = prompt('Give us a name so others know who you are!')
-// while(username === null){
-//     username = prompt('Give us a name so others know who you are!')
-// }
+// var username = 'Paul'
+var username = prompt('Give us a name so others know who you are!')
+while(username === null){
+    username = prompt('Give us a name so others know who you are!')
+}
 
 // Grab the room name parameter from the query and send to server
 const params = new URLSearchParams(window.location.search)
@@ -61,7 +61,11 @@ function displayMessage(message){
     chat = document.querySelector('.chat')
     newMessage = document.createElement('div')
     newMessage.classList.add('message')
-    newMessage.innerHTML = `<p class="msgInfo">${message.name}<span style="float: right;">${message.time}</span></p>
+    color = '#37e79e'
+    if(message.name === "Roomers Bot"){
+        color = '#74dcfc'
+    }
+    newMessage.innerHTML = `<p class="msgInfo" style='background-color: ${color};'>${message.name}<span style="float: right;">${message.time}</span></p>
     <p class="content">${message.text}</p>`
     chat.appendChild(newMessage)
 }
