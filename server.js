@@ -56,7 +56,7 @@ io.on('connection', socket => {
 
     // When a client leaves, notify all other clients
     socket.on('disconnect', () => {
-        io.sockets.in(USER_TO_ROOM[socket.id]).emit('new_message', format('Roomers Bot', `${USER_TO_NAME[socket.id]} has left the chat`))
+        io.sockets.in(USER_TO_ROOM[socket.id]).emit('new_message', format('Roomers Bot', `${USER_TO_NAME[socket.id]} just left the chat`))
         // Remove that socket from the room
         socket.leave(USER_TO_ROOM[socket.id])
         // Update the user list for remaining room members if there are any
