@@ -38,6 +38,10 @@ document.querySelector('#sendMsg').addEventListener('click', () => {
 // New message received event. Add it to the chat
 socket.on('new_message', data => {
     displayMessage(data)
+
+    // Autoscroll
+    chat = document.querySelector('.chat')
+    chat.scrollTop = chat.scrollHeight
 })
 
 // When user list is received, update the display
@@ -57,6 +61,7 @@ function displayMessage(message){
     chat = document.querySelector('.chat')
     newMessage = document.createElement('div')
     newMessage.classList.add('message')
-    newMessage.innerHTML = `Sent at ${message.time} by ${message.name}: ${message.text}`
+    newMessage.innerHTML = `<p class="msgInfo">${message.name}<span style="float: right;">${message.time}</span></p>
+    <p class="content">${message.text}</p>`
     chat.appendChild(newMessage)
 }
