@@ -14,10 +14,10 @@ const ROOM = params.get('room')
 socket.emit('join_room', {room: ROOM, name: username})
 
 // When enter key is pressed, get message from text field and send it to server
-document.querySelector('#msg').onkeydown = (e) => {
+document.querySelector('#inputMsg').onkeydown = (e) => {
     if(e.keyCode == 13){
-        val = document.querySelector('#msg').value.trim()
-        document.querySelector('#msg').value = ''
+        val = document.querySelector('#inputMsg').value.trim()
+        document.querySelector('#inputMsg').value = ''
         if(val !== ''){
             socket.emit('client_message', val)
         }
@@ -25,14 +25,14 @@ document.querySelector('#msg').onkeydown = (e) => {
 }
 
 // When send button is clicked, get message from text field and send it to server
-document.querySelector('#send').addEventListener('click', () => {
-    val = document.querySelector('#msg').value.trim()
-    document.querySelector('#msg').value = ''
+document.querySelector('#sendMsg').addEventListener('click', () => {
+    val = document.querySelector('#inputMsg').value.trim()
+    document.querySelector('#inputMsg').value = ''
     if(val !== ''){
         socket.emit('client_message', val)
     }
     // Focus back on to the text field since user has clicked off of it
-    document.querySelector('#msg').focus()
+    document.querySelector('#inputMsg').focus()
 })
 
 // New message received event. Add it to the chat
@@ -54,8 +54,9 @@ socket.on('user_list', list => {
 
 // Given a message object, display the text in the chat
 function displayMessage(message){
-    ul = document.querySelector('.messages')
-    latest = document.createElement('li')
-    latest.innerHTML = `Sent at ${message.time} by ${message.name}: ${message.text}`
-    ul.appendChild(latest)
+    chat = document.querySelector('.chat')
+    newMessage = document.createElement('div')
+    newMessage.classList.add('message')
+    newMessage.innerHTML = `Sent at ${message.time} by ${message.name}: ${message.text}`
+    chat.appendChild(newMessage)
 }
