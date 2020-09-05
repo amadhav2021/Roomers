@@ -13,6 +13,9 @@ const params = new URLSearchParams(window.location.search)
 const ROOM = params.get('room')
 socket.emit('join_room', {room: ROOM, name: username})
 
+// Provide join information
+document.querySelector('#joinInfo').innerHTML = `JOIN: <span style='color: #1591c6;'>${window.location.href}</span> or enter '${ROOM}' from main lobby`
+
 // When enter key is pressed, get message from text field and send it to server
 document.querySelector('#inputMsg').onkeydown = (e) => {
     if(e.keyCode == 13){

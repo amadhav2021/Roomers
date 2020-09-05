@@ -73,7 +73,11 @@ body {
 
 #roomName {
     font-size: 26px;
-    overflow: auto;
+    margin-top: 10px;
+}
+
+#joinInfo {
+    margin-top: -23px;
 }
 
 .chat {
