@@ -1,20 +1,43 @@
 // Initialize a socket at the root namespace
 const socket = io()
 
-// Prompt for a name [CHANGE TO MODAL DISPLAY LATER]
-// var username = 'Paul'
-var username = prompt('Give us a name so others know who you are!')
-while(username === null){
-    username = prompt('Give us a name so others know who you are!')
-}
+// Focus on the username input field
+document.querySelector('#username').focus()
 
 // Grab the room name parameter from the query and send to server
 const params = new URLSearchParams(window.location.search)
 const ROOM = params.get('room')
-socket.emit('join_room', {room: ROOM, name: username})
 
 // Provide join information
 document.querySelector('#joinInfo').innerHTML = `JOIN: <span style='color: #1591c6;'>${window.location.href}</span> or enter '${ROOM}' from main lobby`
+
+// When username is entered, join room with that name
+document.querySelector('#submitName').addEventListener('click', () => {
+    username = document.querySelector('#username').value.trim()
+    if(username === ''){
+        document.querySelector('#username').value = ''
+        document.querySelector('#username').focus()
+    }
+    else{
+        socket.emit('join_room', {room: ROOM, name: username})
+        document.querySelector('.modal-bg').style.display = 'none';
+    }
+})
+
+// When entery key is pressed on username input, join room with that name
+document.querySelector('#username').onkeydown = (e) => {
+    if(e.keyCode == 13){
+        username = document.querySelector('#username').value.trim()
+        if(username === ''){
+            document.querySelector('#username').value = ''
+            document.querySelector('#username').focus()
+        }
+        else{
+            socket.emit('join_room', {room: ROOM, name: username})
+            document.querySelector('.modal-bg').style.display = 'none';
+        }
+    } 
+}
 
 // When enter key is pressed, get message from text field and send it to server
 document.querySelector('#inputMsg').onkeydown = (e) => {
