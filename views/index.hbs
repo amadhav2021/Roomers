@@ -3,14 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/home.css">
     <title>Roomers</title>
 </head>
 <body>
-    <h1>Welcome to Roomers!</h1>
-    <form action="/chat">
-        <label for="roomInput">Create or join room:</label>
-        <input type="text" name="room" id="roomInput">
-        <input type="submit" value="Go">
-    </form>
+    <p id="header" class='center'>Welcome to Roomers!</p>
+    <div class="descBox">
+        <p id="description">
+            Need a quick place to chat with friends without the hassle of phone numbers or clunky register-to-use webistes?
+            With Roomers, just enter a chat room name and hop in! Once you've entered, share the link or room or name with
+            your peers so they can join too!
+
+            Roomers is powered by web sockets, so there is almost no lag when messages are sent. Data is not stored either,
+            so rest assured that all of your messages and personal information are completely private. So what are you waiting for?
+            Get started by creating a room below!
+        </p>
+    </div>
+    
+    <div class="inputWrapper">
+        <form action="/chat">
+            <p id="label" class="center">Create or join room:</p>
+            <input type="text" name="room" id="roomInput" placeholder="Enter room name...">
+            <input type="submit" id="submitRoom" value="Get Started!">
+        </form>
+    </div>
 </body>
 </html>
