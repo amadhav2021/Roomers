@@ -21,6 +21,7 @@ document.querySelector('#submitName').addEventListener('click', () => {
     else{
         socket.emit('join_room', {room: ROOM, name: username})
         document.querySelector('.modal-bg').style.display = 'none';
+        document.querySelector('#inputMsg').focus()
     }
 })
 
@@ -35,6 +36,7 @@ document.querySelector('#username').onkeydown = (e) => {
         else{
             socket.emit('join_room', {room: ROOM, name: username})
             document.querySelector('.modal-bg').style.display = 'none';
+            document.querySelector('#inputMsg').focus()
         }
     } 
 }
